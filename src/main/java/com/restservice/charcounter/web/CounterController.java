@@ -14,7 +14,6 @@ public class CounterController {
 
     CounterService counterService;
 
-
     @PostMapping("/letter-count")
     public Map <Character, Integer> countCharacters(@Valid @ RequestBody Word word) {
         Map<Character, Integer> unsorted = counterService.countLetters(word.getInput());

@@ -36,6 +36,31 @@ public class CounterServiceTest {
         Map<Character, Integer> unsortedMap = counterService.countLetters(word.getInput());
 
         //Assert
-        assertEquals(unsortedMap, mapToAssert);
+        assertEquals(mapToAssert, unsortedMap);
     }
+    @Test
+    @DisplayName("")
+    void testCountCharactersInString_whenGivenIncorrectString_shouldThrowException() {
+        //Arrange
+        word.setInput("");
+        Map<Character, Integer> unsortedMap = counterService.countLetters(word.getInput());
+
+        //Assert
+
+    }
+
+    @Test
+    @DisplayName("Map has been sorted and now displaying in desc order of occurrences")
+    void testSortMapForDescendingOrderOfOccurrences_returnSortedMapInDescOrder() {
+        //Arrange
+        Map<Character, Integer> unsortedMap = counterService.countLetters(word.getInput());
+        counterService.sortMapOfLetters(unsortedMap);
+        mapToAssert.put('a', 4);
+        mapToAssert.put('c', 4);
+        mapToAssert.put('b', 2);
+
+        //Assert
+        assertEquals(mapToAssert, unsortedMap);
+    }
+
 }
