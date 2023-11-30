@@ -4,18 +4,22 @@ import com.restservice.charcounter.io.Word;
 import com.restservice.charcounter.service.CounterService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@AllArgsConstructor
 @RequestMapping("/api")
 public class CounterController {
 
     CounterService counterService;
+    @Autowired
+    public CounterController(CounterService counterService) {
+        this.counterService = counterService;
+    }
 
     @PostMapping("/letter-count")
-    public Map <Character, Integer> countCharacters(@Valid @ RequestBody Word word) {
+    public Map <Character, Integer> countCharacters(@RequestBody @Valid Word word) {
         Map<Character, Integer> unsorted = counterService.countLetters(word.getInput());
         return counterService.sortMapOfLetters(unsorted);
     }

@@ -1,6 +1,5 @@
 package com.restservice.charcounter;
 
-
 import com.restservice.charcounter.io.Word;
 import com.restservice.charcounter.service.CounterService;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.HashMap;
 import java.util.Map;
-
 
 public class CounterServiceTest {
     private Map<Character, Integer> mapToAssert;
@@ -28,7 +26,6 @@ public class CounterServiceTest {
         mapToAssert.put('b', 2);
         mapToAssert.put('c', 4);
     }
-
     @Test
     @DisplayName("Characters has been counted")
     void testCountCharactersInString_whenGivenCorrectString_returnUnsortedMapOfOccurrences() {
@@ -38,17 +35,6 @@ public class CounterServiceTest {
         //Assert
         assertEquals(mapToAssert, unsortedMap);
     }
-    @Test
-    @DisplayName("")
-    void testCountCharactersInString_whenGivenIncorrectString_shouldThrowException() {
-        //Arrange
-        word.setInput("");
-        Map<Character, Integer> unsortedMap = counterService.countLetters(word.getInput());
-
-        //Assert
-
-    }
-
     @Test
     @DisplayName("Map has been sorted and now displaying in desc order of occurrences")
     void testSortMapForDescendingOrderOfOccurrences_returnSortedMapInDescOrder() {
